@@ -3,7 +3,7 @@ package utils
 enum class AuthResponseMessageCode(private val message: String) {
     SUCCESSFULLY_AUTHENTICATE("The user was successfully authenticated!"),
     PASSWORD_INCORRECT("Incorrect password!"),
-    CLIENT_NOT_FOUND("Client not found!");
+    CLIENT_NOT_FOUND("Client not founds!");
 
     override fun toString(): String {
         return message
