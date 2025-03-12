@@ -23,6 +23,7 @@ data class Client(
     @Column(name = "email_address", unique = true)
     val emailAddress: String = "",
     @Column(name = "action", nullable = false)
+    @Enumerated(EnumType.STRING)
     val action: ClientAction = ClientAction.CREATE,
     @OneToOne(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var credential: Credential? = null
