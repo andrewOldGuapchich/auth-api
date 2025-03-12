@@ -47,3 +47,22 @@ data class Credential(
     @JoinColumn(name = "client_id", nullable = false, referencedColumnName = "id")
     val client: Client? = null
 )
+
+@Entity
+@Table(name = "data_verify")
+data class DataVerify(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0,
+    @Column(name = "verify_code")
+    val verifyCode: String = "",
+    @Column(name = "create_date")
+    val createDate: LocalDateTime? = LocalDateTime.now(),
+    @Column(name = "client_email")
+    val clientEmail: String = "",
+    @Column(name = "expire_date")
+    val expireDate: LocalDateTime? = LocalDateTime.now(),
+    @ManyToOne(cascade = [CascadeType.PERSIST])
+    @JoinColumn(name = "client_id", nullable = false, referencedColumnName = "id")
+    val client: Client? = null
+)

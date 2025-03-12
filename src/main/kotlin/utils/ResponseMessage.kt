@@ -19,6 +19,16 @@ enum class RegisterResponseMessageCode(private val messageText: String){
     }
 }
 
+enum class ActivationClientResponseCode(private val messageText: String){
+    CODE_MATCH_ERROR("Codes don't match!"),
+    CODE_IS_EXPIRED("The code has expired!!"),
+    ACTIVATION_SUCCESSFULLY("Success!");
+
+    override fun toString(): String {
+        return messageText
+    }
+}
+
 enum class ClientActionMessageCode(private val messageText: String){
     SUCCESSFULLY_CREATE("The user was successfully created!"),
     SUCCESSFULLY_UPDATE("The user was successfully updated!"),
