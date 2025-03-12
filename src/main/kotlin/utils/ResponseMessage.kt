@@ -11,7 +11,6 @@ enum class AuthResponseMessageCode(private val message: String) {
 }
 
 enum class RegisterResponseMessageCode(private val messageText: String){
-    SUCCESSFULLY_CREATE("The user was successfully created!"),
     ALREADY_EXISTS("The user already exists!"),
     PASSWORD_MATCH_ERROR("Passwords don't match!");
 
@@ -20,3 +19,12 @@ enum class RegisterResponseMessageCode(private val messageText: String){
     }
 }
 
+enum class ClientActionMessageCode(private val messageText: String){
+    SUCCESSFULLY_CREATE("The user was successfully created!"),
+    SUCCESSFULLY_UPDATE("The user was successfully updated!"),
+    SUCCESSFULLY_DELETE("The user was successfully deleted!");
+
+    override fun toString(): String {
+        return messageText
+    }
+}

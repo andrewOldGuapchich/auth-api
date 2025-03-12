@@ -1,6 +1,7 @@
 package entities.model
 
 import jakarta.persistence.*
+import utils.ClientAction
 import java.time.LocalDateTime
 
 @Entity
@@ -21,6 +22,8 @@ data class Client(
     val login: String = "",
     @Column(name = "email_address", unique = true)
     val emailAddress: String = "",
+    @Column(name = "action", nullable = false)
+    val action: ClientAction = ClientAction.CREATE,
     @OneToOne(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var credential: Credential? = null
 )

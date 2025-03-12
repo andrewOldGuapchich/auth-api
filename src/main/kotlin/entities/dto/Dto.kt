@@ -31,12 +31,18 @@ data class AuthResponse(
     override val messageTimestamp: LocalDateTime? = LocalDateTime.now()
 ) : Response(message, status, messageTimestamp)
 
+data class UpdateRequest(
+    val login: String,
+    val oldPassword: String,
+    val newPassword: String,
+    val confirmNewPassword: String
+)
+
 open class Response(
     open val message: Any,
     open val status: Number,
     open val messageTimestamp: LocalDateTime? = LocalDateTime.now()
 )
-
 
 data class MessagePayload(
     val request: Any,
