@@ -1,15 +1,13 @@
 package services
 
-import entities.dto.AuthRequest
-import entities.dto.RegisterRequest
-import entities.dto.UpdateRequest
-import utils.ActivationClientResponseCode
+import entities.dto.*
 import utils.AuthResponseMessageCode
+import utils.ClientActionMessageCode
 import utils.RegisterResponseMessageCode
 
 interface ClientService {
-    fun registerNewClient(request: RegisterRequest): Any
-    fun activationClient(): ActivationClientResponseCode
+    fun registerNewClient(registerRequest: RegisterRequest): RegisterResponseMessageCode
+    fun clientAction(clientActionRequest: ClientActionRequest): ClientActionMessageCode
     fun findClientByLogin(authRequest: AuthRequest): AuthResponseMessageCode
-    fun updateClientPassword(updateRequest: UpdateRequest): Any
+    fun updateClientPassword(updateRequest: UpdateRequest): UpdateResponse
 }

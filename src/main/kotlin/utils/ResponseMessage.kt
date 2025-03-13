@@ -12,16 +12,17 @@ enum class AuthResponseMessageCode(private val message: String) {
 
 enum class RegisterResponseMessageCode(private val messageText: String){
     ALREADY_EXISTS("The user already exists!"),
-    PASSWORD_MATCH_ERROR("Passwords don't match!");
+    PASSWORD_MATCH_ERROR("Passwords don't match!"),
+    WAITING_ACTIVATION("The activation code has been sent!");
 
     override fun toString(): String {
         return messageText
     }
 }
 
-enum class ActivationClientResponseCode(private val messageText: String){
+enum class ActivationClientMessageCode(private val messageText: String){
     CODE_MATCH_ERROR("Codes don't match!"),
-    CODE_IS_EXPIRED("The code has expired!!"),
+    CODE_IS_EXPIRED("The code has expired!"),
     ACTIVATION_SUCCESSFULLY("Success!");
 
     override fun toString(): String {
@@ -38,3 +39,8 @@ enum class ClientActionMessageCode(private val messageText: String){
         return messageText
     }
 }
+//
+//enum class MailSendMessageCode(private val messageText: String){
+//    CODE_SEND("Code has been sent!"),
+//
+//}
