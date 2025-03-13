@@ -1,5 +1,24 @@
 package utils
 
+enum class RegisterResponseMessageCode(private val messageText: String){
+    ALREADY_EXISTS("The user already exists!"),
+    PASSWORD_MATCH_ERROR("Passwords don't match!"),
+    WAITING_ACTIVATION_CODE("The activation code has been sent!");
+
+    override fun toString(): String {
+        return messageText
+    }
+}
+
+enum class UpdateResponseMessageCode(private val messageText: String) {
+    PASSWORD_MATCH_ERROR("Passwords don't match!"),
+    WAITING_VERIFICATION_CODE("The verification code has been sent!");
+
+    override fun toString(): String {
+        return messageText
+    }
+}
+
 enum class AuthResponseMessageCode(private val message: String) {
     SUCCESSFULLY_AUTHENTICATE("The user was successfully authenticated!"),
     PASSWORD_INCORRECT("Incorrect password!"),
@@ -9,17 +28,6 @@ enum class AuthResponseMessageCode(private val message: String) {
         return message
     }
 }
-
-enum class RegisterResponseMessageCode(private val messageText: String){
-    ALREADY_EXISTS("The user already exists!"),
-    PASSWORD_MATCH_ERROR("Passwords don't match!"),
-    WAITING_ACTIVATION("The activation code has been sent!");
-
-    override fun toString(): String {
-        return messageText
-    }
-}
-
 enum class ActivationClientMessageCode(private val messageText: String){
     CODE_MATCH_ERROR("Codes don't match!"),
     CODE_IS_EXPIRED("The code has expired!"),
@@ -31,6 +39,8 @@ enum class ActivationClientMessageCode(private val messageText: String){
 }
 
 enum class ClientActionMessageCode(private val messageText: String){
+    CODE_MATCH_ERROR("Codes don't match!"),
+    CODE_IS_EXPIRED("The code has expired!"),
     SUCCESSFULLY_CREATE("The user was successfully created!"),
     SUCCESSFULLY_UPDATE("The user was successfully updated!"),
     SUCCESSFULLY_DELETE("The user was successfully deleted!");
@@ -39,8 +49,3 @@ enum class ClientActionMessageCode(private val messageText: String){
         return messageText
     }
 }
-//
-//enum class MailSendMessageCode(private val messageText: String){
-//    CODE_SEND("Code has been sent!"),
-//
-//}
