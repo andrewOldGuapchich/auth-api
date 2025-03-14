@@ -1,7 +1,6 @@
 package entities.model
 
 import jakarta.persistence.*
-import utils.ClientAction
 import java.time.LocalDateTime
 
 @Entity
@@ -12,8 +11,9 @@ data class Client(
     val id: Long = 0,
     @Column(name = "amnd_date")
     val amndDate: LocalDateTime? = LocalDateTime.now(),
-    @Column(name = "amnd_state", length = 1)
-    val amndState: String = "A",
+    @Column(name = "amnd_state", length = 10)
+    @Enumerated(EnumType.STRING)
+    val amndState: AmndState = AmndState.WAITING,
     @Column(name = "prev_id")
     var prevId: Long? = null,
     @Column(name = "message_payload")
@@ -37,8 +37,9 @@ data class Credential(
     val id: Long = 0,
     @Column(name = "amnd_date")
     val amndDate: LocalDateTime? = LocalDateTime.now(),
-    @Column(name = "amnd_state", length = 1)
-    val amndState: String = "A",
+    @Column(name = "amnd_state", length = 10)
+    @Enumerated(value = EnumType.STRING)
+    val amndState: AmndState = AmndState.ACTIVE,
     @Column(name = "prev_id")
     val prevId: Long? = null,
     @Column(name = "password_hash", nullable = false)
@@ -54,6 +55,9 @@ data class DataVerify(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
+    @Column(name = "amnd_state", length = 10)
+    @Enumerated(EnumType.STRING)
+    val amndState: AmndState = AmndState.ACTIVE,
     @Column(name = "verify_code")
     val verifyCode: String = "",
     @Column(name = "create_date")
@@ -66,3 +70,16 @@ data class DataVerify(
     @JoinColumn(name = "client_id", nullable = false, referencedColumnName = "id")
     val client: Client? = null
 )
+
+enum class ClientAction {
+    CREATE,
+    UPDATE,
+    DELETE
+}
+
+enum class AmndState {
+    ACTIVE,
+    CLOSED,
+    INACTIVE,
+    WAITING,
+}
