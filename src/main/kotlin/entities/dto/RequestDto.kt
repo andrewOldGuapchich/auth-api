@@ -1,6 +1,7 @@
 package entities.dto
 
-import utils.ClientAction
+import entities.model.ClientAction
+
 
 data class RegisterRequest(
     val login: String,

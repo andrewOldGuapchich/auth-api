@@ -51,7 +51,7 @@ data class Credential(
 
 @Entity
 @Table(name = "data_verify")
-data class DataVerify(
+data class VerificationData(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
