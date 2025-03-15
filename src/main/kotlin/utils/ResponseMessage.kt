@@ -50,5 +50,3 @@ enum class ClientActionMessageCode(private val messageText: String){
         return messageText
     }
 }
-
-class FoundStatus()
