@@ -14,8 +14,9 @@ data class Client(
     @Column(name = "amnd_state", length = 10)
     @Enumerated(EnumType.STRING)
     val amndState: AmndState = AmndState.WAITING,
-    @Column(name = "prev_id")
-    var prevId: Long? = null,
+    @OneToOne
+    @JoinColumn(name = "prev_id", referencedColumnName = "id", nullable = true)
+    val prevClient: Client? = null,
     @Column(name = "message_payload")
     val messagePayload: String = "",
     @Column(name = "login", unique = true)
@@ -50,8 +51,9 @@ data class Credential(
     @Column(name = "amnd_state", length = 10)
     @Enumerated(value = EnumType.STRING)
     val amndState: AmndState = AmndState.ACTIVE,
-    @Column(name = "prev_id")
-    val prevId: Long? = null,
+    @OneToOne
+    @JoinColumn(name = "prev_id", referencedColumnName = "id", nullable = true)
+    val prevCredential: Credential? = null,
     @Column(name = "password_hash", nullable = false)
     val passwordHash: String = "",
     @ManyToOne(cascade = [CascadeType.PERSIST])
