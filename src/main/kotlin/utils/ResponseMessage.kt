@@ -41,6 +41,7 @@ enum class ActivationClientMessageCode(private val messageText: String){
 enum class ClientActionMessageCode(private val messageText: String){
     CODE_MATCH_ERROR("Codes don't match!"),
     CODE_IS_EXPIRED("The code has expired!"),
+    CLIENT_NOT_FOUND("Client not found!"),
     SUCCESSFULLY_CREATE("The user was successfully created!"),
     SUCCESSFULLY_UPDATE("The user was successfully updated!"),
     SUCCESSFULLY_DELETE("The user was successfully deleted!");
@@ -49,3 +50,5 @@ enum class ClientActionMessageCode(private val messageText: String){
         return messageText
     }
 }
+
+class FoundStatus()
