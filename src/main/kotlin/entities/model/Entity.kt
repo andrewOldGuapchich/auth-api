@@ -25,9 +25,19 @@ data class Client(
     @Column(name = "action", nullable = false)
     @Enumerated(EnumType.STRING)
     val action: ClientAction = ClientAction.CREATE,
-    @OneToOne(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    var credential: Credential? = null
-)
+    @OneToMany(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var credentials: List<Credential> = mutableListOf(),
+    @OneToMany(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val verificationData: List<VerificationData> = mutableListOf()
+) {
+    fun getActiveCredential(): Credential? = credentials.find {
+        it.amndState == AmndState.ACTIVE
+    }
+
+    fun getActiveVerificationData(): VerificationData? = verificationData.find {
+        it.amndState == AmndState.ACTIVE
+    }
+}
 
 @Entity
 @Table(name="credential")
