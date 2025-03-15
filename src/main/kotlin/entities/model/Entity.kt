@@ -27,9 +27,9 @@ data class Client(
     @Enumerated(EnumType.STRING)
     val action: ClientAction = ClientAction.CREATE,
     @OneToMany(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    var credentials: List<Credential> = mutableListOf(),
+    var credentials: MutableList<Credential> = mutableListOf(),
     @OneToMany(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    var verificationData: List<VerificationData> = mutableListOf()
+    var verificationData: MutableList<VerificationData> = mutableListOf()
 ) {
     fun getActiveCredential(): Credential? = credentials.find {
         it.amndState == AmndState.ACTIVE
