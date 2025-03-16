@@ -62,7 +62,7 @@ data class Credential(
 )
 
 @Entity
-@Table(name = "data_verify")
+@Table(name = "otp_archive")
 data class OtpArchive(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,6 +78,9 @@ data class OtpArchive(
     val clientEmail: String = "",
     @Column(name = "expire_date")
     val expireDate: LocalDateTime? = LocalDateTime.now(),
+    @Column(name = "action")
+    @Enumerated(EnumType.STRING)
+    val action: ClientAction = ClientAction.CREATE,
     @ManyToOne(cascade = [CascadeType.PERSIST])
     @JoinColumn(name = "client_id", nullable = false, referencedColumnName = "id")
     val client: Client? = null
