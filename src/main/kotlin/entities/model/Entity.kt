@@ -13,7 +13,7 @@ data class Client(
     val amndDate: LocalDateTime? = LocalDateTime.now(),
     @Column(name = "amnd_state", length = 10)
     @Enumerated(EnumType.STRING)
-    val amndState: AmndState = AmndState.WAITING,
+    var amndState: AmndState = AmndState.WAITING,
     @OneToOne
     @JoinColumn(name = "prev_id", referencedColumnName = "id", nullable = true)
     val prevClient: Client? = null,
@@ -50,7 +50,7 @@ data class Credential(
     val amndDate: LocalDateTime? = LocalDateTime.now(),
     @Column(name = "amnd_state", length = 10)
     @Enumerated(value = EnumType.STRING)
-    val amndState: AmndState = AmndState.ACTIVE,
+    var amndState: AmndState = AmndState.ACTIVE,
     @OneToOne
     @JoinColumn(name = "prev_id", referencedColumnName = "id", nullable = true)
     val prevCredential: Credential? = null,
@@ -69,7 +69,7 @@ data class OtpArchive(
     val id: Long = 0,
     @Column(name = "amnd_state", length = 10)
     @Enumerated(EnumType.STRING)
-    val amndState: AmndState = AmndState.ACTIVE,
+    var amndState: AmndState = AmndState.ACTIVE,
     @Column(name = "verify_code")
     val verifyCode: String = "",
     @Column(name = "create_date")
