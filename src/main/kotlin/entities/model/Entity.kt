@@ -53,12 +53,12 @@ data class Credential(
     var amndState: AmndState = AmndState.ACTIVE,
     @OneToOne
     @JoinColumn(name = "prev_id", referencedColumnName = "id", nullable = true)
-    val prevCredential: Credential? = null,
+    var prevCredential: Credential? = null,
     @Column(name = "password_hash", nullable = false)
     val passwordHash: String = "",
     @ManyToOne(cascade = [CascadeType.PERSIST])
     @JoinColumn(name = "client_id", nullable = false, referencedColumnName = "id")
-    val client: Client? = null
+    var client: Client? = null
 )
 
 @Entity
@@ -80,10 +80,10 @@ data class OtpArchive(
     val expireDate: LocalDateTime? = LocalDateTime.now(),
     @Column(name = "action")
     @Enumerated(EnumType.STRING)
-    val action: ClientAction = ClientAction.CREATE,
+    var action: ClientAction = ClientAction.CREATE,
     @ManyToOne(cascade = [CascadeType.PERSIST])
     @JoinColumn(name = "client_id", nullable = false, referencedColumnName = "id")
-    val client: Client? = null
+    var client: Client? = null
 )
 
 enum class ClientAction {
