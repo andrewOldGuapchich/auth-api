@@ -29,13 +29,13 @@ data class Client(
     @OneToMany(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var credentials: MutableList<Credential> = mutableListOf(),
     @OneToMany(mappedBy = "client", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    var verificationData: MutableList<VerificationData> = mutableListOf()
+    var verificationData: MutableList<OtpArchive> = mutableListOf()
 ) {
     fun getActiveCredential(): Credential? = credentials.find {
         it.amndState == AmndState.ACTIVE
     }
 
-    fun getActiveVerificationData(): VerificationData? = verificationData.find {
+    fun getActiveVerificationData(): OtpArchive? = verificationData.find {
         it.amndState == AmndState.ACTIVE
     }
 }
@@ -63,7 +63,7 @@ data class Credential(
 
 @Entity
 @Table(name = "data_verify")
-data class VerificationData(
+data class OtpArchive(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
