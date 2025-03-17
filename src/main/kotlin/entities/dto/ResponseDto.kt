@@ -29,7 +29,6 @@ open class Response(
     open val messageTimestamp: LocalDateTime? = LocalDateTime.now()
 )
 
-
 data class MessagePayload(
     val request: Any,
     val messageTimestamp: LocalDateTime? = LocalDateTime.now()
