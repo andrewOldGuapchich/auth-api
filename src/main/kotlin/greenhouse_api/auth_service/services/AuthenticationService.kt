@@ -1,7 +1,6 @@
-package services
+package greenhouse_api.auth_service.services
 
-import entities.dto.AuthRequest
-import entities.dto.RegisterRequest
+import greenhouse_api.auth_service.entities.dto.client.AuthRequest
 import org.springframework.http.ResponseEntity
 
 interface AuthenticationService {
