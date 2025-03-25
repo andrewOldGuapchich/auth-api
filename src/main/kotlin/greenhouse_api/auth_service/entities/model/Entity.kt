@@ -1,4 +1,4 @@
-package entities.model
+package greenhouse_api.auth_service.entities.model
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
@@ -10,7 +10,7 @@ data class Client(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
     @Column(name = "amnd_date")
-    val amndDate: LocalDateTime? = LocalDateTime.now(),
+    var amndDate: LocalDateTime? = LocalDateTime.now(),
     @Column(name = "amnd_state", length = 10)
     @Enumerated(EnumType.STRING)
     var amndState: AmndState = AmndState.WAITING,
@@ -45,7 +45,7 @@ data class Client(
 data class Credential(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    var id: Long = 0,
     @Column(name = "amnd_date")
     val amndDate: LocalDateTime? = LocalDateTime.now(),
     @Column(name = "amnd_state", length = 10)
@@ -60,6 +60,19 @@ data class Credential(
     @JoinColumn(name = "client_id", nullable = false, referencedColumnName = "id")
     var client: Client? = null
 )
+
+enum class ClientAction {
+    CREATE,
+    UPDATE,
+    DELETE
+}
+
+enum class AmndState {
+    ACTIVE,
+    CLOSED,
+    INACTIVE,
+    WAITING,
+}
 
 @Entity
 @Table(name = "otp_archive")
@@ -86,15 +99,3 @@ data class OtpArchive(
     var client: Client? = null
 )
 
-enum class ClientAction {
-    CREATE,
-    UPDATE,
-    DELETE
-}
-
-enum class AmndState {
-    ACTIVE,
-    CLOSED,
-    INACTIVE,
-    WAITING,
-}
