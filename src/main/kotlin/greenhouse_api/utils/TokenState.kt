@@ -1,4 +1,4 @@
-package greenhouse_api.utills
+package greenhouse_api.utils
 
 enum class TokenState {
     VALID,

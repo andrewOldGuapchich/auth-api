@@ -7,7 +7,7 @@ plugins {
     `java-library`
 }
 
-group = "com.andrew.greenhouse.auth"
+group = "com.andrew.greenhouse.api"
 version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
