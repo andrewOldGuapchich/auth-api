@@ -13,8 +13,12 @@ enum class RegisterResponseMessageCode(private val messageText: String){
 
 enum class UpdateResponseMessageCode(private val messageText: String) {
     PASSWORD_MATCH_ERROR("Passwords don't match!"),
-    WAITING_VERIFICATION_CODE("The verification code has been sent!"),
-    INTERNAL_ERROR("Server internal error!");
+    OLD_PASSWORD_MATCH_ERROR("Old passwords is incorrect!"),
+    CLIENT_NOT_FOUND("Client not founds!"),
+    //WAITING_VERIFICATION_CODE("The verification code has been sent!"),
+    INTERNAL_ERROR("Server internal error!"),
+    SUCCESSFULLY_UPDATE("The user was successfully updated!");
+
 
     override fun toString(): String {
         return messageText
